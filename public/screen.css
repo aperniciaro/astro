@@ -78,6 +78,35 @@ button {
   width: 5rem;
 }
 
+.left-arrow {
+  border-radius: 0 10% 10% 0;
+}
+
+.right-arrow {
+  border-radius: 10% 0 0 10%;
+}
+
+.launch-data {
+  background-color: #ededed;
+  border-radius: 5%;
+  max-height: 90%;
+  width: 55%;
+}
+
+.launch-element {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem 0.5rem 0 0.5rem;
+}
+
+.launch-description {
+  border-bottom: 0.1rem solid gray;
+}
+
+.launch-time {
+  border-bottom: 0.1rem solid gray;
+}
+
 .mission-statement {
   background-color: #d1c4e9;
   display: flex;
@@ -86,12 +115,12 @@ button {
   height: 20rem;
 }
 
-p {
-  /* margin: 3rem; */
+.mission-statement p {
   display: flex;
   flex-wrap: wrap;
-  padding: 0;
+  padding: 0 4rem 0 4rem;
   margin: 0;
+  font-size: 1.25rem;
 }
 
 footer {
