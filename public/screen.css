@@ -21,12 +21,15 @@ header {
   height: 3.5rem;
 }
 
+/* need to fix fonts and sizes for various elements */
+
 h1 {
   display: flex;
   flex-wrap: wrap;
 }
 
 nav {
+  /* nav elements need to highlight on hover */
   display: flex;
   flex-direction: row;
 }
@@ -133,6 +136,7 @@ button {
   padding: 0 4rem 0 4rem;
   margin: 0;
   font-size: 1.25rem;
+  /* need to center-justify text */
 }
 
 footer {
@@ -143,3 +147,5 @@ footer {
   justify-content: center;
   align-items: center;
 }
+
+/* make responsive for screen size  */
