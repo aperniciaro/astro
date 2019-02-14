@@ -11,7 +11,7 @@ body {
   min-height: 100%;
 }
 
-.menu-bar {
+header {
   display: flex;
   flex-direction: row;
   background-color: #512da8;
@@ -40,15 +40,31 @@ h3 {
   color: white;
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 20rem;
 }
 
 .copyright {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  height: 1rem;
+  padding: 0;
 }
 
-header {
+.space-x {
+  background-color: #ffc107;
+  height: 3rem;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 10rem;
+}
+
+button {
   background-color: #ffc107;
 }
 
@@ -57,12 +73,15 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 20rem;
 }
 
 p {
   margin: 3rem;
   display: flex;
   flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
 }
 
 footer {
