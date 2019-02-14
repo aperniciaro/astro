@@ -1,5 +1,6 @@
 let copyrightText = ''
 let launchIndex = 0
+let launchArray = []
 
 class Launch {
   constructor(launchInfo) {
@@ -13,15 +14,15 @@ class Launch {
 
 const main = () => {
   getBackground()
-  getLaunch(0)
+  getLaunches()
 }
 
 const navigate = direction => {
   //iterate pos or neg in launch array
-  //getLaunch(i)
+  //render(i)
 }
 
-const render = () => {
+const render = index => {
   //output launch-data section
 }
 
@@ -44,14 +45,13 @@ const getBackground = () => {
     })
 }
 
-const getLaunch = index => {
+const getLaunches = () => {
   fetch('https://sdg-astro-api.herokuapp.com/api/SpaceX/launches/upcoming')
     .then(resp => {
       return resp.json()
     })
     .then(launches => {
-      //make launch element from json[index]
-      //render launch
+      //populate launchArray with launch objects
     })
 }
 

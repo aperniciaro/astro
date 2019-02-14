@@ -42,6 +42,7 @@ h3 {
   justify-content: center;
   align-items: center;
   height: 20rem;
+  /* need to fix background */
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -95,6 +96,7 @@ button {
 }
 
 .launch-data {
+  /* needs more styling */
   background-color: #ededed;
   border-radius: 5%;
   max-height: 90%;
