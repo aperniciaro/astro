@@ -1,5 +1,18 @@
-// let todayPotd = {}
-let copyText = ''
+let copyrightText = ''
+
+class Launch {
+  constructor(launchInfo) {
+    this.launchName = launchInfo.mission_name
+    this.launchDescription = launchInfo.details
+    this.launchTime = launchInfo.launch_date_local
+    this.launchLocation = launchInfo.launch_site.site_name_long
+  }
+}
+
+const main = () => {
+  getBackground()
+  getLaunches()
+}
 
 const getBackground = () => {
   fetch('https://sdg-astro-api.herokuapp.com/api/Nasa/apod')
@@ -7,18 +20,27 @@ const getBackground = () => {
       return resp.json()
     })
     .then(potd => {
-      // todayPotd = potd
       document.getElementById('pic-of-the-day').style.backgroundImage = `url(${
         potd.hdUrl
       })`
       if (potd.copyright == null) {
-        copyText = 'no copyright'
+        copyrightText = 'no copyright'
       } else {
-        copyText = potd.copyright
+        copyrightText = potd.copyright
       }
       document.querySelector('.copyright-text').textContent =
-        'copyright: ' + copyText + ' | title: ' + potd.title
+        'copyright: ' + copyrightText + ' | title: ' + potd.title
     })
 }
 
-document.addEventListener('DOMContentLoaded', getBackground)
+const getLaunches = () => {
+  fetch('https://sdg-astro-api.herokuapp.com/api/SpaceX/launches/upcoming')
+    .then(resp => {
+      return resp.json()
+    })
+    .then(launches => {
+      for (let i = 0; i < launches.length; i++) {}
+    })
+}
+
+document.addEventListener('DOMContentLoaded', main)

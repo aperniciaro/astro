@@ -79,7 +79,12 @@ button {
   background-color: #ffc107;
   height: 7rem;
   width: 5rem;
+  padding: 0;
 }
+
+/* button i {
+  size: 3rem;
+} */
 
 .left-arrow {
   border-radius: 0 10% 10% 0;
