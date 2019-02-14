@@ -49,13 +49,15 @@ h3 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  height: 0.05rem;
+  height: 1rem;
   padding: 0;
 }
 
 .space-x {
   background-color: #ffc107;
   height: 3rem;
+  display: flex;
+  align-items: center;
 }
 
 .carousel {
