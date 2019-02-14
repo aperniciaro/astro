@@ -87,7 +87,7 @@ button {
 }
 
 p {
-  margin: 3rem;
+  /* margin: 3rem; */
   display: flex;
   flex-wrap: wrap;
   padding: 0;
