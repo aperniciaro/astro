@@ -15,11 +15,27 @@ class Launch {
 const main = () => {
   getBackground()
   getLaunches()
+  console.log(launchArray)
+  render(launchIndex)
 }
 
 const navigate = direction => {
-  //iterate pos or neg in launch array
-  //render(i)
+  console.log(direction)
+  if (direction === 'right') {
+    if (launchIndex === launchArray.length - 1) {
+      launchIndex = 0
+    } else {
+      launchIndex++
+    }
+  } else if (direction === 'left') {
+    if (launchIndex === 0) {
+      launchIndex = launchArray.length - 1
+    } else {
+      launchIndex--
+    }
+  }
+  console.log(launchIndex)
+  render(launchArray[launchIndex])
 }
 
 const render = index => {
@@ -51,12 +67,18 @@ const getLaunches = () => {
       return resp.json()
     })
     .then(launches => {
-      //populate launchArray with launch objects
+      for (let i = 0; i < launches.length; i++) {
+        launchArray[i] = launches[i]
+      }
     })
 }
 
-document.addEventListener('DOMContentLoaded', main)
-document.querySelector('.left-arrow').addEventListener('click', navigate(left))
+document
+  .querySelector('.left-arrow')
+  .addEventListener('click', () => navigate('left'))
+console.log('left click')
 document
   .querySelector('.right-arrow')
-  .addEventListener('click', navigate(right))
+  .addEventListener('click', () => navigate('right'))
+console.log('right click')
+document.addEventListener('DOMContentLoaded', main)
