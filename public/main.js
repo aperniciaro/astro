@@ -1,4 +1,5 @@
-let todayPotd = {}
+// let todayPotd = {}
+let copyText = ''
 
 const getBackground = () => {
   fetch('https://sdg-astro-api.herokuapp.com/api/Nasa/apod')
@@ -10,8 +11,13 @@ const getBackground = () => {
       document.getElementById('pic-of-the-day').style.backgroundImage = `url(${
         potd.hdUrl
       })`
-      let picMeta = 'copyright: ' + potd.copyright + ' | title: ' + potd.title
-      document.querySelector('.copyright-text').textContent = picMeta
+      if (potd.copyright == null) {
+        copyText = 'no copyright'
+      } else {
+        copyText = potd.copyright
+      }
+      document.querySelector('.copyright-text').textContent =
+        'copyright: ' + copyText + ' | title: ' + potd.title
     })
 }
 
