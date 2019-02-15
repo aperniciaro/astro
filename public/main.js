@@ -15,8 +15,6 @@ class Launch {
 const main = () => {
   getBackground()
   getLaunches()
-  console.log(launchArray)
-  render(launchIndex)
 }
 
 const getBackground = () => {
@@ -41,17 +39,19 @@ const getBackground = () => {
 const getLaunches = () => {
   fetch('https://sdg-astro-api.herokuapp.com/api/SpaceX/launches/upcoming')
     .then(resp => {
+      console.log(2)
       return resp.json()
     })
     .then(launches => {
+      console.log(3)
       for (let i = 0; i < launches.length; i++) {
         launchArray.push(new Launch(launches[i]))
       }
+      render(launchIndex)
     })
 }
 
 const navigate = direction => {
-  console.log(direction)
   if (direction === 'right') {
     if (launchIndex === launchArray.length - 1) {
       launchIndex = 0
@@ -65,7 +65,6 @@ const navigate = direction => {
       launchIndex--
     }
   }
-  console.log(launchIndex)
   render(launchIndex)
 }
 
@@ -75,7 +74,7 @@ const render = index => {
     parent.removeChild(parent.firstChild)
   }
   //launch name
-  const nameElement = document.createElement('section')
+  const nameElement = document.createElement('span')
   nameElement.classList.add('launch-element')
   nameElement.classList.add('name-element')
   parent.appendChild(nameElement)
@@ -90,7 +89,7 @@ const render = index => {
   nameText.textContent = launchArray[index].launchName
   nameElement.appendChild(nameText)
   //launch descr
-  const descriptionElement = document.createElement('section')
+  const descriptionElement = document.createElement('span')
   descriptionElement.classList.add('launch-element')
   descriptionElement.classList.add('description-element')
   parent.appendChild(descriptionElement)
@@ -105,7 +104,7 @@ const render = index => {
   descriptionText.textContent = launchArray[index].launchDescription
   descriptionElement.appendChild(descriptionText)
   //launch time
-  const timeElement = document.createElement('section')
+  const timeElement = document.createElement('span')
   timeElement.classList.add('launch-element')
   timeElement.classList.add('time-element')
   parent.appendChild(timeElement)
@@ -120,7 +119,7 @@ const render = index => {
   timeText.textContent = launchArray[index].launchTime
   timeElement.appendChild(timeText)
   //launch location
-  const locationElement = document.createElement('section')
+  const locationElement = document.createElement('span')
   locationElement.classList.add('launch-element')
   locationElement.classList.add('location-element')
   parent.appendChild(locationElement)
@@ -139,9 +138,7 @@ const render = index => {
 document
   .querySelector('.left-arrow')
   .addEventListener('click', () => navigate('left'))
-console.log('left click')
 document
   .querySelector('.right-arrow')
   .addEventListener('click', () => navigate('right'))
-console.log('right click')
 document.addEventListener('DOMContentLoaded', main)

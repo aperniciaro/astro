@@ -113,11 +113,11 @@ button {
   padding: 0.5rem 0.5rem 0 0.5rem;
 }
 
-.launch-description {
+.description-element {
   border-bottom: 0.1rem solid gray;
 }
 
-.launch-time {
+.time-element {
   border-bottom: 0.1rem solid gray;
 }
 
