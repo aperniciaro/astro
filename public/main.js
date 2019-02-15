@@ -15,6 +15,7 @@ class Launch {
   }
   countdown() {
     // setInterval(function() {
+    // launch will be Date(launchTime).getTime()
     //   let now = Date.getTime()
     //   let distance = this.launchTime - new
     //   let days = Math.floor(distance / (1000 * 60 * 60 * 24))
