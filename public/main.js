@@ -13,13 +13,21 @@ class Launch {
     this.launchTime = launchInfo.launch_date_utc
     this.launchLocation = launchInfo.launch_site.site_name_long
   }
+  countdown() {
+    // setInterval(function() {
+    //   let now = Date.getTime()
+    //   let distance = this.launchTime - new
+    //   let days = Math.floor(distance / (1000 * 60 * 60 * 24))
+    //   let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+    //   let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+    //   let seconds = Math.floor((distance % (1000 * 60)) / 1000)
+    // }, 1000)
+  }
 }
 
 const main = () => {
   getBackground()
   getLaunches()
-  console.log(launchArray)
-  console.log(Date.now())
 }
 
 const getBackground = () => {
