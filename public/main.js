@@ -5,7 +5,11 @@ let launchArray = []
 class Launch {
   constructor(launchInfo) {
     this.launchName = launchInfo.mission_name
-    this.launchDescription = launchInfo.details
+    if (launchInfo.details == null) {
+      this.launchDescription = 'No description available yet.'
+    } else {
+      this.launchDescription = launchInfo.details
+    }
     //make launch time a countdown
     this.launchTime = launchInfo.launch_date_utc
     this.launchLocation = launchInfo.launch_site.site_name_long
