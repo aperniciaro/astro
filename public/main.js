@@ -10,7 +10,6 @@ class Launch {
     } else {
       this.launchDescription = launchInfo.details
     }
-    //make launch time a countdown
     this.launchTime = launchInfo.launch_date_utc
     this.launchLocation = launchInfo.launch_site.site_name_long
   }
@@ -19,6 +18,8 @@ class Launch {
 const main = () => {
   getBackground()
   getLaunches()
+  console.log(launchArray)
+  console.log(Date.now())
 }
 
 const getBackground = () => {
@@ -43,11 +44,9 @@ const getBackground = () => {
 const getLaunches = () => {
   fetch('https://sdg-astro-api.herokuapp.com/api/SpaceX/launches/upcoming')
     .then(resp => {
-      console.log(2)
       return resp.json()
     })
     .then(launches => {
-      console.log(3)
       for (let i = 0; i < launches.length; i++) {
         launchArray.push(new Launch(launches[i]))
       }
@@ -71,8 +70,6 @@ const navigate = direction => {
   }
   render(launchIndex)
 }
-
-const countdown = () => {}
 
 const render = index => {
   const parent = document.querySelector('.launch-data')
@@ -122,7 +119,7 @@ const render = index => {
 
   const timeText = document.createElement('p')
   timeText.classList.add('launch-time')
-  timeText.textContent = launchArray[index].launchTime
+  //timeText.textContent = launchArray[index].timeToLaunch
   timeElement.appendChild(timeText)
   //launch location
   const locationElement = document.createElement('span')
