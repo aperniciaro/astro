@@ -72,6 +72,8 @@ const navigate = direction => {
   render(launchIndex)
 }
 
+const countdown = () => {}
+
 const render = index => {
   const parent = document.querySelector('.launch-data')
   while (parent.firstChild) {

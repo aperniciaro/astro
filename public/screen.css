@@ -45,9 +45,9 @@ h3 {
   justify-content: center;
   align-items: center;
   height: 20rem;
-  /* need to fix background */
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 .copyright-bar {
