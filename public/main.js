@@ -43,6 +43,7 @@ const render = index => {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild)
   }
+
   //launch name
   const nameElement = document.createElement('section')
   nameElement.classList.add('launch-element')
@@ -69,46 +70,32 @@ const render = index => {
   const descriptionText = document.createElement('p')
   descriptionText.classList.add('launch-description')
   descriptionElement.appendChild(descriptionText)
+  //launch time
+  const timeElement = document.createElement('section')
+  timeElement.classList.add('launch-element')
+  timeElement.classList.add('time-element')
+  parent.appendChild(timeElement)
 
-  const nameElement = document.createElement('section')
-  nameElement.classList.add('launch-element')
-  nameElement.classList.add('name-element')
-  parent.appendChild(nameElement)
+  const timeLogo = document.createElement('i')
+  timeLogo.classList.add('fas fa-clock')
+  timeElement.appendChild(timeLogo)
 
-  const nameLogo = document.createElement('i')
-  nameLogo.classList.add('fas fa-space-shuttle')
-  nameElement.appendChild(nameLogo)
+  const timeText = document.createElement('p')
+  timeText.classList.add('launch-time')
+  timeElement.appendChild(timetext)
+  //launch location
+  const locationElement = document.createElement('section')
+  locationElement.classList.add('launch-element')
+  locationElement.classList.add('location-element')
+  parent.appendChild(locationElement)
 
-  const nameText = document.createElement('h3')
-  nameText.classList.add('launch-name')
-  nameElement.appendChild(nameText)
+  const locationLogo = document.createElement('i')
+  locationLogo.classList.add('fas fa-map-marked-alt')
+  locationElement.appendChild(locationLogo)
 
-  const nameElement = document.createElement('section')
-  nameElement.classList.add('launch-element')
-  nameElement.classList.add('name-element')
-  parent.appendChild(nameElement)
-
-  const nameLogo = document.createElement('i')
-  nameLogo.classList.add('fas fa-space-shuttle')
-  nameElement.appendChild(nameLogo)
-
-  const nameText = document.createElement('h3')
-  nameText.classList.add('launch-name')
-  nameElement.appendChild(nameText)
-
-  //   <section class="launch-element">
-  //     <i class="fas fa-info-circle"></i>
-  //     <p class="launch-description">launch description</p>
-  //   </section>
-  //   <section class="launch-element">
-  //     <i class="fas fa-clock"></i>
-  //     <p class="launch-time">countdown</p>
-  //   </section>
-  //   <section class="launch-element">
-  //     <i class="fas fa-map-marked-alt"></i>
-  //     <p class="launch-location">launch location</p>
-  //   </section>
-  // </section>
+  const locationText = document.createElement('p')
+  locationText.classList.add('launch-location')
+  locationElement.appendChild(locationText)
 }
 
 const getBackground = () => {
