@@ -13,17 +13,30 @@ class Launch {
     this.launchTime = launchInfo.launch_date_utc
     this.launchLocation = launchInfo.launch_site.site_name_long
   }
-  countdown() {
-    // setInterval(function() {
-    // launch will be Date(launchTime).getTime()
-    //   let now = Date.getTime()
-    //   let distance = this.launchTime - new
-    //   let days = Math.floor(distance / (1000 * 60 * 60 * 24))
-    //   let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-    //   let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-    //   let seconds = Math.floor((distance % (1000 * 60)) / 1000)
-    // }, 1000)
-  }
+}
+
+countdown = index => {
+  let launchTimeFormatted = new Date(launchArray[index].launchTime).getTime()
+  setInterval(function() {
+    let now = new Date().getTime()
+    let distance = launchTimeFormatted - now
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24))
+    let hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    )
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000)
+  }, 1000)
+  return (
+    days +
+    ' days, ' +
+    hours +
+    ' hours, ' +
+    minutes +
+    ' mins, ' +
+    seconds +
+    ' seconds'
+  )
 }
 
 const main = () => {
@@ -128,7 +141,8 @@ const render = index => {
 
   const timeText = document.createElement('p')
   timeText.classList.add('launch-time')
-  //timeText.textContent = launchArray[index].timeToLaunch
+  timeText.textContent = countdown(index)
+  console.log(timeText.textContent)
   timeElement.appendChild(timeText)
   //launch location
   const locationElement = document.createElement('span')
