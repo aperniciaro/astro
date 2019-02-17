@@ -109,7 +109,7 @@ const render = index => {
   nameLogo.classList.add('fa-space-shuttle')
   nameElement.appendChild(nameLogo)
 
-  const nameText = document.createElement('h3')
+  const nameText = document.createElement('h4')
   nameText.classList.add('launch-name')
   nameText.textContent = launchArray[index].launchName
   nameElement.appendChild(nameText)
@@ -141,8 +141,9 @@ const render = index => {
 
   const timeText = document.createElement('p')
   timeText.classList.add('launch-time')
-  timeText.textContent = countdown(index)
-  console.log(timeText.textContent)
+  // timeText.textContent = countdown(index)
+  timeText.textContent = launchArray[index].launchTime
+  // console.log(timeText.textContent)
   timeElement.appendChild(timeText)
   //launch location
   const locationElement = document.createElement('span')
