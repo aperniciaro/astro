@@ -1,6 +1,7 @@
 let copyrightText = ''
 let launchIndex = 0
 let launchArray = []
+let interval
 
 class Launch {
   constructor(launchInfo) {
@@ -13,30 +14,6 @@ class Launch {
     this.launchTime = launchInfo.launch_date_utc
     this.launchLocation = launchInfo.launch_site.site_name_long
   }
-}
-
-countdown = index => {
-  let launchTimeFormatted = new Date(launchArray[index].launchTime).getTime()
-  setInterval(function() {
-    let now = new Date().getTime()
-    let distance = launchTimeFormatted - now
-    let days = Math.floor(distance / (1000 * 60 * 60 * 24))
-    let hours = Math.floor(
-      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    )
-    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-    let seconds = Math.floor((distance % (1000 * 60)) / 1000)
-  }, 1000)
-  return (
-    days +
-    ' days, ' +
-    hours +
-    ' hours, ' +
-    minutes +
-    ' mins, ' +
-    seconds +
-    ' seconds'
-  )
 }
 
 const main = () => {
@@ -134,17 +111,11 @@ const render = index => {
   timeElement.classList.add('time-element')
   parent.appendChild(timeElement)
 
-  const timeLogo = document.createElement('i')
-  timeLogo.classList.add('fas')
-  timeLogo.classList.add('fa-clock')
-  timeElement.appendChild(timeLogo)
+  clearInterval(interval)
+  interval = setInterval(() => {
+    countdown(index)
+  }, 1000)
 
-  const timeText = document.createElement('p')
-  timeText.classList.add('launch-time')
-  // timeText.textContent = countdown(index)
-  timeText.textContent = launchArray[index].launchTime
-  // console.log(timeText.textContent)
-  timeElement.appendChild(timeText)
   //launch location
   const locationElement = document.createElement('span')
   locationElement.classList.add('launch-element')
@@ -160,6 +131,45 @@ const render = index => {
   locationText.classList.add('launch-location')
   locationText.textContent = launchArray[index].launchLocation
   locationElement.appendChild(locationText)
+}
+
+countdown = index => {
+  let launchTimeFormatted = new Date(launchArray[index].launchTime).getTime()
+  let now = new Date().getTime()
+  let distance = launchTimeFormatted - now
+  let days = Math.floor(distance / (1000 * 60 * 60 * 24))
+  let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+  let seconds = Math.floor((distance % (1000 * 60)) / 1000)
+  let countdownString =
+    days +
+    ' days, ' +
+    hours +
+    ' hours, ' +
+    minutes +
+    ' mins, ' +
+    seconds +
+    ' seconds'
+
+  const timeText = document.createElement('p')
+  timeText.classList.add('launch-time')
+  let timeParent = document.getElementsByClassName('time-element')[0]
+
+  while (timeParent.firstChild) {
+    timeParent.removeChild(timeParent.firstChild)
+  }
+
+  const timeLogo = document.createElement('i')
+  timeLogo.classList.add('fas')
+  timeLogo.classList.add('fa-clock')
+  timeParent.appendChild(timeLogo)
+  timeParent.appendChild(timeText)
+
+  if (distance < 0) {
+    timeText.textContent = 'Launched'
+  } else {
+    timeText.textContent = countdownString
+  }
 }
 
 document
