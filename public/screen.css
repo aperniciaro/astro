@@ -141,6 +141,11 @@ button {
   margin: 0.5rem 0.5rem 0 0.5rem;
 }
 
+.launch-element h4,
+.launch-element p {
+  margin-left: 0.35rem;
+}
+
 .name-element {
   justify-content: center;
   text-align: center;
