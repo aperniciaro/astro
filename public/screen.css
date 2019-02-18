@@ -86,26 +86,28 @@ h3:hover {
   justify-content: space-between;
   height: 15rem;
   align-items: center;
+  padding: 0.5rem 0 0.5rem 0;
 }
 
 button {
   background-color: #ffc107;
-  height: 8rem;
-  width: 8rem;
+  height: 3rem;
+  width: 5rem;
   padding: 0;
 }
 
-/*not working*/
-button i {
-  height: 5rem;
-}
+/* resize not working*/
+/* button i {
+  margin: 0;
+  height: 3rem;
+} */
 
 .left-arrow {
-  border-radius: 0 10% 10% 0;
+  border-radius: 0 20% 20% 0;
 }
 
 .right-arrow {
-  border-radius: 10% 0 0 10%;
+  border-radius: 20% 0 0 20%;
 }
 
 .launch-data {
@@ -114,6 +116,7 @@ button i {
   height: 90%;
   width: 100%;
   margin: 0 2.5rem 0 2.5rem;
+  padding: 0.5rem;
 }
 
 .launch-element {
@@ -174,12 +177,24 @@ h5 {
 }
 
 /* not working */
-h5:visited {
-  color: #cccccc;
-}
+/* a:visited {
+  color: inherit;
+} */
 
 #sdg-link {
   text-decoration: underline;
 }
 
-/* make responsive for screen size  */
+@media (min-width: 500px) {
+  button {
+    height: 8rem;
+    width: 8rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  button {
+    height: 5rem;
+    width: 8rem;
+  }
+}
